@@ -1,0 +1,19 @@
+hostnamectl set-hostname <some system name here>
+yum install epel-release 
+yum install yum-utils
+yum update # then reboot 
+yum install python-pip
+um install python-wheel
+pip install ansible --upgrade
+pip install boto boto3
+pip install awscli
+
+####install sublime text editor###
+rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg
+ sudo yum-config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
+ yum install sublime-text
+ 
+ yum install git
+ 
+ ### use a hub.docker.com account ###
+ ### use a github account ###
