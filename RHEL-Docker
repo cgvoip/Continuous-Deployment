@@ -1,0 +1,74 @@
+
+yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+
+yum  -y install python-pip python-wheel
+
+yum  -y install policycoreutils-python
+yum  -y install  ftp://ftp.icm.edu.pl/vol/rzm6/linux-centos-vault/7.3.1611/extras/x86_64/Packages/container-selinux-2.9-4.el7.noarch.rpm
+
+yum  -y install wget 
+
+yum upgrade python-setuptools
+
+pip install --upgrade pip
+
+## For docker-compose install the following prerequisits
+
+python-websocket-client  
+yum  -y install http://mirror.centos.org/centos/7/extras/x86_64/Packages/python-websocket-client-0.32.0-116.el7.noarch.rpm
+
+Requires:  install docker-py-1.10.6 six-1.11.0 websocket-client-0.44.0
+pip install https://pypi.python.org/packages/23/c7/1fd6d4d620809fe2f323869d719e2dd0086c939b67021303a9ec40f5a05b/docker_py-1.10.6-py2.py3-none-any.whl#md5=61e8ab14ed745906cd13cad6f23b1670
+
+Package: python-docker-py-1.10.6-1.el7.noarch (/python-docker-py-1.10.6-1.el7.noarch)
+
+ /usr/lib/python2.7/site-packages/
+
+*****install docker-compose with pip *****
+
+pip install https://pypi.python.org/packages/c3/9c/e4e609f0b29e51c657a66e543cd62c62917e9a9597271be3f1c2f29fdc68/docker_compose-1.17.1-py2.py3-none-any.whl#md5=5fbd91de4b855c5a8eb9fa252b736a11
+
+
+sudo yum install  -y yum-utils \
+  device-mapper-persistent-data \
+  lvm2
+sudo yum-config-manager --enable docker-ce-edge
+
+sudo yum-config-manager --enable docker-ce-test
+
+### clean up  sudo yum-config-manager --disable docker-ce-edge
+#### list all packages yum list docker-ce --showduplicates | sort -r
+
+Find out why this caused a docker-compose error
+fix pip uninstall docker-py; pip uninstall docker; pip install docker
+
+yum install docker-ce
+
+sudo systemctl enable docker
+sudo systemctl start docker  #creates docker0 bridge
+
+
+Create a docker yaml file
+
+docker-compose up -d
+docker-compose logs -f
+docker-compose down
+
+
+Change system name
+ hostnamectl set-hostname rhel7-vm1
+service systemd-hostnamed restart
+
+show hostname: nmcli general hostname
+
+### Install docker-machine
+ curl -L https://github.com/docker/machine/releases/download/v0.13.0/docker-machine-`uname -s`-`uname -m` >/tmp/docker-machine &&
+ chmod +x /tmp/docker-machine &&
+ cp /tmp/docker-machine /usr/local/bin/docker-machine
+
+
+
+
+
+
+
